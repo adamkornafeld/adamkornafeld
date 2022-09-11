@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Earn, learn and have fun
+title: Earn, learn and have fun!
 tags: career, fun, earn, learn
 mode: immersive
 header:
@@ -32,5 +32,5 @@ A more interesting aspect of it is the choice one eventually has to make. Become
 🕹 Have Fun
 -----------
 
-I like to [put](https://youtu.be/eJUnA0DKsvg?t=27) some skin in the game every once in a while. I usually challenge my colleagues for a pizza. Large, name your toppings. Some were skeptical in the beginning, but after I had that pie delivered to a colleague on a different continent it became a hallmark in no time. 
-
+I like to [put](https://youtu.be/eJUnA0DKsvg?t=27) some skin in the game every once in a while. I usually challenge my colleagues for a pizza. Large, name your toppings. Some were skeptical in the beginning, but after I had that pie delivered to a colleague on a different continent it became a hallmark in no time.
+My utmost favorite pastime at work is [pair programming](https://en.wikipedia.org/wiki/Pair_programming). I usually jump at any opportunity to pair-program with anyone knowing that there is always something to learn for at least one of the participants, but ideally for all. Recently, I am aiming to bring my pair programming game to the next level, by wowing to pair program with each and everyone at my current work place. And not just with engineers, but with HR, marketing and heck, even the CEO.
