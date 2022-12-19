@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Cloud, meet Desktop - a system design case study
+title: Cloud, meet Desktop - a system design challenge
 tags: system design
 mode: immersive
 header:
@@ -13,9 +13,6 @@ article_header:
     src: https://uploads-ssl.webflow.com/5e1f17bab0dc6527c1ecc801/5e835dd88d500a6603ab9a0c_computing-2-p-1600.jpeg
 ---
 
-
-🧑‍💻 System Design Challenge
---------------------------
 
 Let's look at an interesting system design challenge that I recently came across. Given an ordinary cloud system comprised of multiple services. These services communicate over HTTP using RESTful APIs. Your mission - [should you choose to accept it](https://youtu.be/KlyLtJd-ArY?t=173) - is to integrate the services of an external provider with the system. The provider had two offerings to integrate with. A modern RESTful API over HTTP and a desktop app providing a socket API.
 
