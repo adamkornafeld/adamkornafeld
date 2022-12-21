@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Cloud, meet Desktop - a system design challenge
-tags: system design
+tags: system design cloud sdk api server desktop websocket
 mode: immersive
 header:
   theme: dark
@@ -10,7 +10,7 @@ article_header:
   theme: dark
   background_color: '#203028'
   background_image:
-    src: /assets/images/websocket_proxy.png
+    src: /assets/images/clouds.jpg
 ---
 
 
