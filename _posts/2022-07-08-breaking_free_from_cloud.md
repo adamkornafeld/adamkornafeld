@@ -10,7 +10,7 @@ article_header:
   theme: dark
   background_color: '#203028'
   background_image:
-    src: https://uploads-ssl.webflow.com/5e1f17bab0dc6527c1ecc801/5e835dd88d500a6603ab9a0c_computing-2-p-1600.jpeg
+    src: /assets/images/websocket_proxy.png
 ---
 
 
@@ -51,7 +51,7 @@ Why do I call out this difference? If we can deploy a piece of software on the d
 The only remaining question at hand is: what type of connection should the proxy app use to connect to the cloud system? As usual, it depends. And the question we have to answer is: How will data flow between the service provider (A) and our cloud system (B)? Since this is analogous with a cable there are really only two options. From A to B or from B to A. If the service provider sends data to the proxy app we can forward that data via simple HTTP requests. This makes sense since we mentioned that our cloud system is already using a RESTful communication. 
 The more interesting scenario is the reverse one. What if we want to send data from our cloud system to the service provider? One approach is HTTP [long polling](https://en.wikipedia.org/wiki/Push_technology#Long_polling), but that is kind of an emulation. A more flexible approach is establishing a websocket connection. This gives us the option to communicate in both directions. The proxy app can initiate the connection to the cloud server and once the connection is established, the cloud server can send data to the proxy on demand. Here is a quick sketch of the setup:
 
-![WebSocket Proxy](/assets/websocket_proxy.png)
+![WebSocket Proxy](/assets/images/websocket_proxy.png)
 
 🎁 Wrap up
 ----------
