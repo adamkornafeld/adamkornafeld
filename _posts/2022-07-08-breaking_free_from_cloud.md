@@ -21,7 +21,7 @@ It goes without question that from the perspective of a cloud system, the deskto
 📦 SDK vs API
 ----------
 
-As an online service provider, one has a handful of options to cater for customers who wish to interact with your service in a programmatic fashion. Two common approaches are an application programming interface (API) or a software development kit (SDK). Both has benefits and tradeoffs. Let's take a look at them one by one.
+As an online service provider, one has a handful of options to cater for customers who wish to interact with your service in a programmatic fashion. Two common approaches are an application programming interface (API) or a software development kit (SDK). Both have benefits and tradeoffs. Let's take a look at them one by one.
 
 The benefits of an API is that you only have to implement it in a single programming language. Therefore, it is usually the more economical choice. The downside, on the other hand, is that the clients wishing to interact with the API will have to implement the client side part for themselves. Quality documentation as well as a well tested implementation is essential. Otherwise, your help desk will be flooded with questions or worse your API users will look for another provider.
 
@@ -36,12 +36,12 @@ The benefits of an SDK is that your clients will _thank you_. It is the white gl
 - open the right ports 
 - and call it a day. 
 
-However, what if a user has to interact with the desktop app, say regularly log in? Remote desktop, VPN and all the extra hoops and complexity. Can we keep do something simpler?
+However, what if a user has to interact with the desktop app, say regularly log in? Remote desktop, VPN and all the extra hoops and complexity. Can we do something simpler?
 
 🆚 Desktop vs. Server
 ------------------
 
-Desktop and server are both just fancy terms for computers. There is usually one crucial difference between the two. When you think about your laptop as a desktop, you run around with it all day long. Connecting to the internet from a myriad of locations: home, office, coffee shop. In all these locations, chances are your laptop is assigned a new IP address. Even if your computer is a true desktop, changes are your home internet provider did not assign you a permanent IP address. A server, on the other hand, usually earns the title _server_ by having a permanent IP address assigned to it. If you know the address, you can connect to that server.
+Desktop and server are both just fancy terms for computers. There is usually one crucial difference between the two. When you think about your laptop as a desktop, you run around with it all day long. Connecting to the internet from a myriad of locations: home, office, coffee shop. In all these locations, chances are your laptop is assigned a new IP address. Even if your computer is a true desktop, chances are your home internet provider did not assign you a permanent IP address. A server, on the other hand, usually earns the title _server_ by having a permanent IP address assigned to it. If you know the address, you can connect to that server.
 
 Why do I call out this difference? If we can deploy a piece of software on the desktop, it can initiate a connection to the server on one side. On the other side, it can establish a local socket connection with the desktop app of the service provider we are integrating with. This piece of software acts as a simple proxy between our two components. 
 

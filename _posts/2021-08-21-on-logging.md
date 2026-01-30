@@ -145,8 +145,8 @@ With the clock in place, testing the logic becomes a breeze:
 
     @Test
     void suppress() {
-        Clock twentyOneSecondTickingClock = new ToyClock(Duration.ofMinute(21));
-        LogSuppressor minuteSuppressor = new LogSuppressor(Duration.ofMinute(1), twentyOneSecondTickingClock);
+        Clock twentyOneSecondTickingClock = new ToyClock(Duration.ofMinutes(21));
+        LogSuppressor minuteSuppressor = new LogSuppressor(Duration.ofMinutes(1), twentyOneSecondTickingClock);
         // every call to suppress ticks the toy clock injected into LogSuppressor once
         
         minuteSuppressor.suppress(() -> log.info("This message will be logged")); // clock advances 21 seconds

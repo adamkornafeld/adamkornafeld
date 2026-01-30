@@ -14,7 +14,7 @@ article_header:
 ---
 
 
-When it comes to having fun at work, simple games like rock, paper, scissors often get pulled out to put a twist on making decisions. Burrito or gyros for lunch? Who gets the ticket to tonights big game - _go Celtics_ - offered up by a colleague who can't make it? Today I am gonna talk about my favorite such game and we will also implement it in python. As of the writing of this article I am using python `3.8`.
+When it comes to having fun at work, simple games like rock, paper, scissors often get pulled out to put a twist on making decisions. Burrito or gyros for lunch? Who gets the ticket to tonight's big game - _go Celtics_ - offered up by a colleague who can't make it? Today I am gonna talk about my favorite such game and we will also implement it in python. As of the writing of this article I am using python `3.8`.
 
 
 🎱 The game
@@ -26,7 +26,7 @@ Let's digest that sentence a bit.
 - _Lowest positive_: the lowest number you can pick is 1
 - _Unique_: two players picking the same number get eliminated
 
-What I love about this game is that the rules are so simple that first time players usually skimp over the details, and haphazardly pick 1 as their entry and end up losing. See, you have to the biggest emphasis is on unique. If two or more players pick 1 as their entry, they all get eliminated. Picking a winner would continue to the next lowest entries and continue up until the first unique entry is found. What is especially funny about this game is that technically you can be the winner with an entry that does not fit into the category of low at all. You could enter the googol number - that is 1 followed by 100 zeros - and still be the winner, if all other players eliminated each other by picking shared numbers as their entries.
+What I love about this game is that the rules are so simple that first time players usually skimp over the details, and haphazardly pick 1 as their entry and end up losing. See, the biggest emphasis is on unique. If two or more players pick 1 as their entry, they all get eliminated. Picking a winner would continue to the next lowest entries and continue up until the first unique entry is found. What is especially funny about this game is that technically you can be the winner with an entry that does not fit into the category of low at all. You could enter the googol number - that is 1 followed by 100 zeros - and still be the winner, if all other players eliminated each other by picking shared numbers as their entries.
 
 ▶️ Example round
 ---------------
@@ -78,13 +78,13 @@ Once we know how many players there are, we need to collect the guesses of the c
     collect_guesses(num_players, guesses)
 ```
 
-Method `collect_guesses` is where things start to get interesting. Following HIG, it makes sense to distinguish the case of 2 players vs. more players. For the 2 player case, there is only one computer player, whereas for more than two players, there are more then two computer players. For every computer player, we call the `create_guess_tuple` method that will generate a random entry for a player. For more than two players, we can spice up the user experience a bit by creating the illusion that the computer players are thinking super deep when they are picking their entries. To achieve this, we rely on the `sleep` method of the built in `time` package and the `progressbar` feature of click. We simply sleep a little for every computer player and show a progress bar in the meantime.
+Method `collect_guesses` is where things start to get interesting. Following HIG, it makes sense to distinguish the case of 2 players vs. more players. For the 2 player case, there is only one computer player, whereas for more than two players, there are more than two computer players. For every computer player, we call the `create_guess_tuple` method that will generate a random entry for a player. For more than two players, we can spice up the user experience a bit by creating the illusion that the computer players are thinking super deep when they are picking their entries. To achieve this, we rely on the `sleep` method of the built in `time` package and the `progressbar` feature of click. We simply sleep a little for every computer player and show a progress bar in the meantime.
 
 ```python
  def collect_guesses(num_players, guesses):
     if num_players == 2: 
         guesses.append(create_guess_tuple(1))
-        print(f"Player #1 have made their guess.")
+        print(f"Player #1 has made their guess.")
     elif num_players > 2:
         with click.progressbar(range(1, num_players), label=f"Players #1-#{num_players - 1} guessing", show_eta=False, show_percent=False) as players:
             for player in players:
@@ -94,7 +94,7 @@ Method `collect_guesses` is where things start to get interesting. Following HIG
     print(f"You are player #{num_players}.")
 ```
 
-The central point of the game logic is implemented in method `create_guess_tuple`. The first observation we can make is that we need to generate a random number. However, to make the game more challenging to play, any random number will not do. We would like to achieve a distribution that is skewed towards lower numbers. Lucky for us, we chose python as our language for this exercise and it comes with third party packages to make solving any problem a breeze. Packages like [NumPy](https://numpy.org/) certainly has skew functions that we could use here. However, NumPy is not the lightest of packages so at the same time it feels wrong to whip out a big gun for such a small thing as out little game at hand. Instead, we will achieve the skewing with a clever little trick. We will make the computer players play a different strategy using their indexes. Player 1 will pick a random number from smaller set of numbers, than player 2, 3 and so on. This simple logic will guarantee that some computer players will always pick low numbers close to 1. At the same time, we also make all computer players follow a different strategy that helps us avoid the situation of computer players constantly eliminating each other. Using the constant of `GUESS_MULTIPLIER` we can control how tight the computer players pick their entries. E.g.: 3 computer players, with a constant of 4. Computer player 1 will pick a random entry from the set of (1, 4). Computer player 2 will pick a random entry from the set of (1, 8). Computer player 1 will pick a random entry from the set of (1, 12). As you see, the chance of 3 computer players picking entries from 1 to 4 is triple that of numbers larger than 4, thus we have achieved skewing without having to rely on complex math and heavy external libraries.
+The central point of the game logic is implemented in method `create_guess_tuple`. The first observation we can make is that we need to generate a random number. However, to make the game more challenging to play, any random number will not do. We would like to achieve a distribution that is skewed towards lower numbers. Lucky for us, we chose python as our language for this exercise and it comes with third party packages to make solving any problem a breeze. Packages like [NumPy](https://numpy.org/) certainly has skew functions that we could use here. However, NumPy is not the lightest of packages so at the same time it feels wrong to whip out a big gun for such a small thing as our little game at hand. Instead, we will achieve the skewing with a clever little trick. We will make the computer players play a different strategy using their indexes. Player 1 will pick a random number from smaller set of numbers, than player 2, 3 and so on. This simple logic will guarantee that some computer players will always pick low numbers close to 1. At the same time, we also make all computer players follow a different strategy that helps us avoid the situation of computer players constantly eliminating each other. Using the constant of `GUESS_MULTIPLIER` we can control how tight the computer players pick their entries. E.g.: 3 computer players, with a constant of 4. Computer player 1 will pick a random entry from the set of (1, 4). Computer player 2 will pick a random entry from the set of (1, 8). Computer player 3 will pick a random entry from the set of (1, 12). As you see, the chance of 3 computer players picking entries from 1 to 4 is triple that of numbers larger than 4, thus we have achieved skewing without having to rely on complex math and heavy external libraries.
 
 ```python
   from random import randint
@@ -127,7 +127,7 @@ To evaluate the winner, we have to consider all pairs of entries. For this we ma
   def evaluate_winner(guesses):
       unique_guesses = set()
       winner = None
-      for (guess_left, guess_right) in for pair in combinations(guesses,2):
+      for (guess_left, guess_right) in combinations(guesses, 2):
           if guess_left[1] != guess_right[1] and not guess_left[1] in unique_guesses:
               winner = guess_left
               break
